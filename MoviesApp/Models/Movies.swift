@@ -34,6 +34,25 @@ struct Movie: Codable, Hashable, Identifiable {
     var id: String {
         imdbID
     }
+    var metascoreInt: Int {
+        Int(Metascore) ?? 0
+    }
+    var numOfRatingsInt: Int {
+        Int(imdbVotes) ?? 0
+    }
+    
+    var releasedInt: Int {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        
+        if let date = dateFormatter.date(from: Released) {
+            let calendar = Calendar.current
+            return calendar.component(.year, from: date)
+        }
+        
+        return 0
+    }
+    
     
     enum CodingKeys: String, CodingKey {
         case type = "Type"
