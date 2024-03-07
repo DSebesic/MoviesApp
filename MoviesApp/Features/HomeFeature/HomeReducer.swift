@@ -15,20 +15,14 @@ struct HomeReducer {
             switch action {
             case let .tabTapped(tab):
                 switch tab {
-                case "Now playing":
+                case HomeReducer.State.CategoryTab.nowPlaying:
                     state.activeTab = .nowPlaying
-                    break
-                case "Upcoming":
+                case HomeReducer.State.CategoryTab.upcoming:
                     state.activeTab = .upcoming
-//                    state.movies = state.movies.sorted{ $0.releasedInt > $1.releasedInt }
-                case "Top rated":
+                case HomeReducer.State.CategoryTab.topRated:
                     state.activeTab = .topRated
-//                    state.movies = state.movies.sorted{ $0.metascoreInt > $1.metascoreInt }
-                case "Popular":
+                case HomeReducer.State.CategoryTab.popular:
                     state.activeTab = .popular
-//                    state.movies = state.movies.sorted{ $0.numOfRatingsInt > $1.numOfRatingsInt }
-                default:
-                    break
                 }
                 
                 return .none

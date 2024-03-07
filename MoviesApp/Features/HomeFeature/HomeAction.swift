@@ -10,7 +10,7 @@ import Foundation
 
 extension HomeReducer {
     enum Action {
-        case tabTapped(String)
+        case tabTapped(HomeReducer.State.CategoryTab)
         case viewAppeared
         case moviesResponse([Movie])
     }

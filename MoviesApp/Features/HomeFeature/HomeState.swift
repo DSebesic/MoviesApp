@@ -28,9 +28,7 @@ extension HomeReducer {
                 
         var loadingValue: LoadingValue = .idle
         var activeTab: CategoryTab = .nowPlaying
-        //        var isLoading: Bool = true
         var movies: [Movie] = []
-        //        var moviesSortedByCategory: [Movie] = []
     }
 }
 

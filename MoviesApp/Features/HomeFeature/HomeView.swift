@@ -13,7 +13,6 @@ import ComposableArchitecture
 extension HomeReducer {
     struct HomeView: View {
         let store: StoreOf<HomeReducer>
-        //    let tabNames: [String] = ["Now playing", "Upcoming", "Top rated", "Popular"]
         
         var body: some View {
             WithViewStore(store, observe: \.loadingValue) { viewStore in
@@ -59,13 +58,13 @@ extension HomeReducer {
                             }
                             Spacer()
                             HStack {
-                                ForEach(State.CategoryTab.allCases, id: \.self) { text in
+                                ForEach(State.CategoryTab.allCases, id: \.self) { tabCategory in
                                     VStack {
                                         Text("TODO")
                                             .onTapGesture {
-                                                store.send(.tabTapped("TODO"))
+                                                store.send(.tabTapped(tabCategory))
                                             }
-                                        if store.activeTab == text {
+                                        if store.activeTab == tabCategory {
                                             Rectangle()
                                                 .fill(Color.appDarkGray)
                                                 .frame(width: 90, height: 4)
@@ -93,7 +92,8 @@ extension HomeReducer {
                         }
                         .padding(16)
                     case .idle:
-                        EmptyView()
+                        ProgressView()
+                            .onAppear { store.send(.viewAppeared) }
                     }
                 }
             }

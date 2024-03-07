@@ -12,14 +12,14 @@ import ComposableArchitecture
 @main
 
 struct MyApp: App {
-    static let store = Store(initialState: AppFeature.State()) {
-        AppFeature()
+    static let store = Store(initialState: AppReducer.State()) {
+        AppReducer()
             ._printChanges()
     }
     
     var body: some Scene {
         WindowGroup {
-            AppView(store: MyApp.store)
+            AppReducer.AppView(store: MyApp.store)
         }
     }
 }
