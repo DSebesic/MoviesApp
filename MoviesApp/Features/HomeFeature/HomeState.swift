@@ -28,7 +28,7 @@ extension HomeReducer {
         var loadingValue: LoadingValue = .idle
         var activeTab: CategoryTab = .nowPlaying
         var movies: [Movie] = []
-        var searchText: String = "Search"
+        var searchText: String = ""
     }
 }
 
