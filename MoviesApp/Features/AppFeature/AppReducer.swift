@@ -11,7 +11,7 @@ import ComposableArchitecture
 @Reducer
 struct AppReducer {
     var body: some Reducer<State, Action> {
-        Scope(state: \.home, action:\.home) {
+        Scope(state: \.homeReducer, action: \.homeReducer) {
             HomeReducer()
         }
         Reduce { state, action in

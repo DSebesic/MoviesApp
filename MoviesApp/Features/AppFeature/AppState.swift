@@ -9,7 +9,7 @@ import Foundation
 import ComposableArchitecture
 
 extension AppReducer {
-    struct State: Equatable {
-        var home = HomeReducer.State()
+    struct State {
+        var homeReducer = HomeReducer.State()
     }
 }

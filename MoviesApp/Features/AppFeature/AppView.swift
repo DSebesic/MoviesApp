@@ -14,7 +14,7 @@ extension AppReducer {
         let store: StoreOf<AppReducer>
         
         var body: some View {
-            HomeReducer.HomeView(store: store.scope(state: \.home, action: \.home))
+            HomeReducer.HomeView(store: store.scope(state: \.homeReducer, action: \.homeReducer))
         }
     }
 }

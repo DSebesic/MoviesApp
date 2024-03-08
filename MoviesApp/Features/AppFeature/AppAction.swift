@@ -9,7 +9,8 @@ import Foundation
 import ComposableArchitecture
 
 extension AppReducer {
+    @CasePathable
     enum Action {
-        case home(HomeReducer.Action)
+        case homeReducer(HomeReducer.Action)
     }
 }

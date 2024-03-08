@@ -33,7 +33,6 @@ struct HomeReducer {
                 state.movies = movies
                 return .none
             }
-            return .none
         }
     }
     
@@ -43,10 +42,8 @@ struct HomeReducer {
         state.loadingValue = .loading
         return .run { send in
             //            networkin.fetchMovies()
-            print("action started")
             let (data, _) = try await URLSession.shared
                 .data(from: URL(string: "https://api.npoint.io/57bf829ba4493be4ea53")!)
-            print("Data gatherd")
             let movies = try JSONDecoder().decode([Movie].self, from: data)
             await send(.moviesResponse(movies))
         }
