@@ -47,7 +47,6 @@ struct MovieItem: View {
                     }
                 }
                 .frame(maxHeight: .infinity)
-                .padding([.leading], 5)
             } else {
                 ProgressView()
             }

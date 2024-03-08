@@ -26,7 +26,7 @@ extension HomeReducer {
                         //TODO
                     case .loaded(let movies):
                         Color.appBackground.ignoresSafeArea()
-                        if store.searchText != "" {
+                        if store.searchText == "" {
                             VStack(alignment: .leading) {
                                 Text("What do you want to watch?")
                                     .font(.system(size: 18))
@@ -114,7 +114,7 @@ extension HomeReducer {
                                 .padding(8)
                                 ScrollView(.vertical, showsIndicators: false) {
                                     VStack(alignment: .leading, spacing: 30) {
-                                        ForEach(movies) { movie in
+                                        ForEach(movies.filter{ $0.Title.contains(store.searchText)}) { movie in
                                             MovieItem(movie: movie)
                                         }
                                     }
