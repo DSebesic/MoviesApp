@@ -6,12 +6,14 @@
 //
 
 import Foundation
-
+import ComposableArchitecture
 
 extension HomeReducer {
+    @CasePathable
     enum Action: Equatable {
         case tabTapped(HomeReducer.State.CategoryTab)
         case viewAppeared
         case moviesResponse([Movie])
+        case textSearched(String)
     }
 }

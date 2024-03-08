@@ -11,7 +11,6 @@ import ComposableArchitecture
 extension HomeReducer {
     @ObservableState
     struct State: Equatable {
-        
         enum LoadingValue: Equatable {
             case idle
             case loading
@@ -29,6 +28,7 @@ extension HomeReducer {
         var loadingValue: LoadingValue = .idle
         var activeTab: CategoryTab = .nowPlaying
         var movies: [Movie] = []
+        var searchText: String = "Search"
     }
 }
 

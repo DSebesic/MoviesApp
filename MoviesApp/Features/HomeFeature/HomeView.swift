@@ -12,7 +12,7 @@ import ComposableArchitecture
 
 extension HomeReducer {
     struct HomeView: View {
-        let store: StoreOf<HomeReducer>
+        @Bindable var store: StoreOf<HomeReducer>
         
         var body: some View {
             WithViewStore(store, observe: \.loadingValue) { viewStore in
@@ -32,7 +32,7 @@ extension HomeReducer {
                                 .foregroundStyle(.white)
                                 .fontWeight(.bold)
                             HStack {
-                                Text("Search")
+                                TextField("Search", text: $store.searchText.sending(\.textSearched))
                                     .padding(8)
                                     .background(Color.appDarkGray)
                                     .foregroundStyle(Color.appLightGray)

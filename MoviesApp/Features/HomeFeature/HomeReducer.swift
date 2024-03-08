@@ -32,6 +32,9 @@ struct HomeReducer {
                 state.loadingValue = .loaded(movies)
                 state.movies = movies
                 return .none
+            case let .textSearched(text):
+                state.searchText = text
+                return .none
             }
         }
     }
