@@ -9,7 +9,9 @@ public struct MovieDetailFeature: Reducer {
         Reduce<State, Action> { state, action in
             switch action {
                 case .viewAppeared, .binding:
-                break
+                    break
+            case let .tabTapped(tab):
+                state.activeTab = tab
             }
             return .none
         }

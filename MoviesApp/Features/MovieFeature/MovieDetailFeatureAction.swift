@@ -5,5 +5,6 @@ public extension MovieDetailFeature {
     enum Action: BindableAction {
         case viewAppeared
         case binding(BindingAction<State>)
+        case tabTapped(MovieDetailFeature.State.DetailsTab)
     }
 }

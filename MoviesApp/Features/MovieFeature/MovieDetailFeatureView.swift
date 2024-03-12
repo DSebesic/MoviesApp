@@ -30,7 +30,7 @@ public extension MovieDetailFeature {
                                 .fontWeight(.bold)
                             Spacer()
                         }
-                        .padding(12)
+                        .padding(24)
                         HStack {
                             Image(.calendarBlank)
                             Text(store.state.movie.Released)
@@ -47,6 +47,38 @@ public extension MovieDetailFeature {
                         }
                         .padding(.horizontal, 24)
                         .foregroundStyle(.appLightGray)
+                        .font(.system(size: 12))
+                        
+                        HStack(spacing: 28) {
+                            ForEach(State.DetailsTab.allCases, id: \.self) { detailsTab in
+                                VStack {
+                                    Text(detailsTab.title)
+                                        .onTapGesture {
+                                            store.send(.tabTapped(detailsTab))
+                                        }
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 14))
+                                        .fontWeight(detailsTab.title == store.state.activeTab.title ? .bold : nil)
+                                        .overlay(detailsTab.title == store.state.activeTab.title ? Rectangle()
+                                            .fill(Color.appDarkGray)
+                                            .frame(width: 90, height: 4)
+                                            .offset(y: 20) : nil, alignment: .bottom)
+                                }
+                            }
+                            Spacer()
+                        }
+                        .padding(24)
+                        VStack {
+                            if store.state.activeTab == State.DetailsTab.AboutMovie {
+                                Text(store.state.movie.Plot)
+                            } else {
+                                ForEach(store.state.movie.Actors.components(separatedBy: ", "), id: \.self) { actor in
+                                    ActorItem(actor: actor)
+                                }
+                            }
+                        }
+                        .padding(16)
+                        .foregroundStyle(.white)
                         .font(.system(size: 12))
                         Spacer()
                     }
