@@ -47,9 +47,11 @@ struct MovieItem: View {
                     }
                 }
                 .frame(maxHeight: .infinity)
+                .padding([.top, .bottom], 8)
             } else {
                 ProgressView()
             }
+            Spacer()
         }
     }
 }

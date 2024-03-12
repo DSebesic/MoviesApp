@@ -9,7 +9,10 @@ import Foundation
 import ComposableArchitecture
 
 extension AppReducer {
-    struct State {
-        var homeReducer = HomeReducer.State()
+    @ObservableState
+    struct State: Equatable {
+        var homeState = HomeReducer.State()
+        var path = StackState<Path.State>()
+//        var movieDetail: MovieDetailFeature.State?
     }
 }

@@ -11,10 +11,19 @@ import SwiftUI
 
 extension AppReducer {
     struct AppView: View {
-        let store: StoreOf<AppReducer>
+        @Bindable var store: StoreOf<AppReducer>
         
         var body: some View {
-            HomeReducer.HomeView(store: store.scope(state: \.homeReducer, action: \.homeReducer))
+            NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
+                HomeReducer.HomeView(store: store.scope(state: \.homeState, action: \.home))
+            } destination: { store in
+                switch store.case {
+                case .movieDetails(let store):
+                    MovieDetailFeature.MovieDetailFeatureView(store: store)
+                case .searchScreen(let store):
+                    SearchFeature.SearchFeatureView(store: store)
+                }
+            }
         }
     }
 }

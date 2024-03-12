@@ -14,6 +14,7 @@ extension HomeReducer {
         case tabTapped(HomeReducer.State.CategoryTab)
         case viewAppeared
         case moviesResponse([Movie])
-        case textSearched(String)
+        case searchTapped
+        case showMovieDetails(Movie)
     }
 }

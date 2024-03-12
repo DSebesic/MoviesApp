@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct Movie: Codable, Hashable, Identifiable {
+public struct Movie: Codable, Hashable, Identifiable {
     let Plot: String
     let type: String
     let Year: String
@@ -31,7 +31,7 @@ struct Movie: Codable, Hashable, Identifiable {
     let imdbVotes: String
     let imdbRating: String
     
-    var id: String {
+    public var id: String {
         imdbID
     }
     var metascoreInt: Int {

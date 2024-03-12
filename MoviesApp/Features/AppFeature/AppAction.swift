@@ -11,6 +11,9 @@ import ComposableArchitecture
 extension AppReducer {
     @CasePathable
     enum Action {
-        case homeReducer(HomeReducer.Action)
+        case home(HomeReducer.Action)
+        case path(StackAction<Path.State, Path.Action>)
+//        case binding(BindingAction<State>)
+//        case movieDetail(MovieDetailFeature.Action)
     }
 }
