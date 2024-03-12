@@ -23,6 +23,19 @@ extension HomeReducer {
             case upcoming
             case topRated
             case popular
+            
+            var title: String  {
+                switch self {
+                case .nowPlaying:
+                    "Now playing"
+                case .upcoming:
+                    "Upcoming"
+                case .topRated:
+                    "Top rated"
+                case .popular:
+                    "Popular"
+                }
+            }
         }
                 
         var loadingValue: LoadingValue = .idle

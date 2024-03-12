@@ -70,19 +70,22 @@ extension HomeReducer {
                             HStack {
                                 ForEach(State.CategoryTab.allCases, id: \.self) { tabCategory in
                                     VStack {
-                                        Text("TODO")
+                                        Text(tabCategory.title)
                                             .onTapGesture {
                                                 store.send(.tabTapped(tabCategory))
                                             }
-                                        if store.activeTab == tabCategory {
-                                            Rectangle()
+                                            .foregroundColor(.white)
+                                            .font(.system(size: 14))
+                                            .fontWeight(tabCategory.title == store.state.activeTab.title ? .bold : nil)
+                                            .overlay(tabCategory.title == store.state.activeTab.title ? Rectangle()
                                                 .fill(Color.appDarkGray)
                                                 .frame(width: 90, height: 4)
-                                        }
+                                                .offset(y: 20) : nil, alignment: .bottom)
                                     }
                                 }
                             }
                             .foregroundColor(.white)
+                            Spacer()
                             Grid {
                                 ForEach(0..<2) { row in
                                     GridRow {
