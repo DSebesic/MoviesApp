@@ -28,9 +28,35 @@ public extension SearchFeature {
                         .cornerRadius(16)
                         .padding([.bottom], 8)
                         
-                        ScrollView(.vertical, showsIndicators: false) {
-                            ForEach(store.state.movies.filter{ $0.Title.contains(store.state.searchText) }) { movie in
-                                MovieItem(movie: movie)
+                        if store.state.searchText == "" {
+                            Spacer()
+                                Text("Find your movie by Type title, categories, years, etc")
+                                    .foregroundStyle(.appLightGray)
+                                    .font(.system(size: 12))
+                                    .padding(.horizontal, 32)
+                        } else if store.state.movies.filter({ $0.Title.contains(store.state.searchText) }).count == 0 {
+                            Spacer()
+                            VStack(alignment: .center, spacing: 12) {
+                                Image(.noResults)
+                                Text("We are sorry, we can not find the movie :(")
+                                    .foregroundStyle(.white)
+                                    .font(.system(size: 16))
+                                Text("Find your movie by Type title, categories, years, etc")
+                                    .foregroundStyle(.appLightGray)
+                                    .font(.system(size: 12))
+                            }
+                            .padding(.horizontal, 64)
+                            .multilineTextAlignment(.center)
+                        } else {
+                            ScrollView(.vertical, showsIndicators: false) {
+                                ForEach(store.state.movies.filter{ $0.Title.contains(store.state.searchText) }) { movie in
+                                    VStack {
+                                        MovieItem(movie: movie)
+                                    }
+                                    .onTapGesture {
+                                        store.send(.showMovieDetails(movie))
+                                    }
+                                }
                             }
                         }
                         Spacer()

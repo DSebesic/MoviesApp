@@ -15,6 +15,6 @@ extension HomeReducer {
         case viewAppeared
         case moviesResponse([Movie])
         case searchTapped
-        case showMovieDetails(Movie)
+        case movieTapped(Movie)
     }
 }

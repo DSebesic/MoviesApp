@@ -118,6 +118,14 @@
 			path = SearchFeature;
 			sourceTree = "<group>";
 		};
+		864E942C2BA07F580064DD75 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8658B2B62B9B50AD00009BA1 /* MovieItem.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		8658B2932B960E9100009BA1 /* Features */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,7 +152,6 @@
 				8658B2A42B99BFC500009BA1 /* HomeView.swift */,
 				8658B2A62B99BFCF00009BA1 /* HomeState.swift */,
 				8658B2A82B99BFDA00009BA1 /* HomeReducer.swift */,
-				8658B2B62B9B50AD00009BA1 /* MovieItem.swift */,
 			);
 			path = HomeFeature;
 			sourceTree = "<group>";
@@ -194,6 +201,7 @@
 		86E864312B96038F00DFDC99 /* MoviesApp */ = {
 			isa = PBXGroup;
 			children = (
+				864E942C2BA07F580064DD75 /* Helpers */,
 				8658B29A2B973FDC00009BA1 /* Models */,
 				86E864322B96038F00DFDC99 /* MoviesAppApp.swift */,
 				86E864362B96039100DFDC99 /* Assets.xcassets */,

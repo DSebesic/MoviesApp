@@ -55,6 +55,9 @@ extension HomeReducer {
                                             image
                                                 .resizable()
                                                 .scaledToFit()
+                                                .onTapGesture {
+                                                    store.send(.movieTapped(movie))
+                                                }
                                         } placeholder: {
                                             ProgressView()
                                         }
@@ -88,6 +91,9 @@ extension HomeReducer {
                                                 image
                                                     .resizable()
                                                     .scaledToFit()
+                                                    .onTapGesture {
+                                                        store.send(.movieTapped(movies[index + 3*row]))
+                                                    }
                                             } placeholder: {
                                                 ProgressView()
                                             }

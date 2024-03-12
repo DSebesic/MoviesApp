@@ -6,6 +6,6 @@ public extension SearchFeature {
         case viewAppeared
         case binding(BindingAction<State>)
         case textSearched(String)
-        case movieTapped(Movie)
+        case showMovieDetails(Movie)
     }
 }

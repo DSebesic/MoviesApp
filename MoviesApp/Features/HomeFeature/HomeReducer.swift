@@ -33,9 +33,8 @@ struct HomeReducer {
                 state.movies = movies
                 return .none
             case .searchTapped:
-                
                 return .none
-            case let .showMovieDetails(movie):
+            case .movieTapped(_):
                 return .none
             }
         }

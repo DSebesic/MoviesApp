@@ -11,15 +11,20 @@ import ComposableArchitecture
 @Reducer
 struct AppReducer {
     var body: some Reducer<State, Action> {
-        Scope(state: \.homeState, action: \.home) {
+        Scope(state: \.homeState, action: \.homeAction) {
             HomeReducer()
         }
+//        Scope(state: \.searchState, action: \.searchAction) {
+//            SearchFeature()
+//        }
         Reduce { state, action in
             switch action {
-            case .home(.showMovieDetails(let movie)):
-                state.path.append(.movieDetails(MovieDetailFeature.State(movie: movie)))
-            case .home(.searchTapped):
+            case .homeAction(.searchTapped):
                 state.path.append(.searchScreen(SearchFeature.State(movies: state.homeState.movies)))
+            case let .homeAction(.movieTapped(movie)):
+                state.path.append(.movieDetails(MovieDetailFeature.State(movie: movie)))
+            case let .path(.element(id: _, action: .searchScreen(.showMovieDetails(movie)))):
+                state.path.append(.movieDetails(MovieDetailFeature.State(movie: movie)))
             default:
                 break
             }

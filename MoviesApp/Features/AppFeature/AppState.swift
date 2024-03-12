@@ -12,6 +12,7 @@ extension AppReducer {
     @ObservableState
     struct State: Equatable {
         var homeState = HomeReducer.State()
+        var searchState = SearchFeature.State(movies: [])
         var path = StackState<Path.State>()
 //        var movieDetail: MovieDetailFeature.State?
     }
